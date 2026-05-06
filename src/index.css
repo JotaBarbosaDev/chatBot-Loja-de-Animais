@@ -1,0 +1,236 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Geist Variable", system-ui, sans-serif;
+  --font-heading: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.965 0.02 88);
+  --foreground: oklch(0.24 0.03 230);
+  --card: oklch(0.992 0.008 84);
+  --card-foreground: oklch(0.24 0.03 230);
+  --popover: oklch(0.992 0.008 84);
+  --popover-foreground: oklch(0.24 0.03 230);
+  --primary: oklch(0.46 0.1 212);
+  --primary-foreground: oklch(0.985 0.002 95);
+  --secondary: oklch(0.9 0.04 84);
+  --secondary-foreground: oklch(0.29 0.03 230);
+  --muted: oklch(0.945 0.015 88);
+  --muted-foreground: oklch(0.49 0.025 228);
+  --accent: oklch(0.79 0.08 155);
+  --accent-foreground: oklch(0.22 0.03 160);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.86 0.03 90);
+  --input: oklch(0.9 0.015 84);
+  --ring: oklch(0.58 0.11 212);
+}
+
+.dark {
+  --background: oklch(0.2 0.02 235);
+  --foreground: oklch(0.97 0.01 196);
+  --card: oklch(0.26 0.02 232);
+  --card-foreground: oklch(0.97 0.01 196);
+  --popover: oklch(0.26 0.02 232);
+  --popover-foreground: oklch(0.97 0.01 196);
+  --primary: oklch(0.74 0.12 210);
+  --primary-foreground: oklch(0.2 0.02 235);
+  --secondary: oklch(0.34 0.03 215);
+  --secondary-foreground: oklch(0.96 0.01 196);
+  --muted: oklch(0.3 0.02 225);
+  --muted-foreground: oklch(0.78 0.02 200);
+  --accent: oklch(0.39 0.05 170);
+  --accent-foreground: oklch(0.95 0.01 196);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.7 0.1 210);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top left, oklch(0.88 0.09 210 / 0.6), transparent 28%),
+      radial-gradient(circle at 85% 8%, oklch(0.9 0.07 150 / 0.4), transparent 22%),
+      linear-gradient(to bottom, oklch(0.985 0.01 80), var(--background));
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  a {
+    @apply text-inherit;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .atlas-panel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .atlas-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, transparent 0%, rgb(255 255 255 / 0.18) 32%, transparent 66%),
+      radial-gradient(circle at top right, rgb(255 255 255 / 0.24), transparent 30%);
+    pointer-events: none;
+  }
+
+  .atlas-mesh {
+    background-image:
+      linear-gradient(to right, rgb(70 96 138 / 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(70 96 138 / 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .atlas-title {
+    @apply font-heading tracking-tight text-balance;
+  }
+
+  .atlas-chat-markdown {
+    @apply text-sm leading-6;
+  }
+
+  .atlas-chat-markdown > :first-child {
+    margin-top: 0;
+  }
+
+  .atlas-chat-markdown > :last-child {
+    margin-bottom: 0;
+  }
+
+  .atlas-chat-markdown p,
+  .atlas-chat-markdown ul,
+  .atlas-chat-markdown ol,
+  .atlas-chat-markdown blockquote,
+  .atlas-chat-markdown table,
+  .atlas-chat-markdown h1,
+  .atlas-chat-markdown h2,
+  .atlas-chat-markdown h3,
+  .atlas-chat-markdown h4 {
+    margin: 0.75rem 0;
+  }
+
+  .atlas-chat-markdown h1,
+  .atlas-chat-markdown h2,
+  .atlas-chat-markdown h3,
+  .atlas-chat-markdown h4 {
+    @apply font-semibold text-foreground;
+  }
+
+  .atlas-chat-markdown h1 {
+    @apply text-lg;
+  }
+
+  .atlas-chat-markdown h2 {
+    @apply text-base;
+  }
+
+  .atlas-chat-markdown h3,
+  .atlas-chat-markdown h4 {
+    @apply text-sm;
+  }
+
+  .atlas-chat-markdown strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .atlas-chat-markdown ul,
+  .atlas-chat-markdown ol {
+    padding-left: 1.1rem;
+  }
+
+  .atlas-chat-markdown ul {
+    list-style: disc;
+  }
+
+  .atlas-chat-markdown ol {
+    list-style: decimal;
+  }
+
+  .atlas-chat-markdown li + li {
+    margin-top: 0.35rem;
+  }
+
+  .atlas-chat-markdown blockquote {
+    @apply border-l-2 border-primary/35 pl-4 italic text-muted-foreground;
+  }
+
+  .atlas-chat-markdown hr {
+    @apply my-4 border-border;
+  }
+
+  .atlas-chat-markdown code {
+    @apply rounded bg-muted px-1 py-0.5 text-[0.92em];
+  }
+
+  .atlas-chat-markdown pre {
+    @apply overflow-x-auto rounded-xl bg-muted p-3;
+  }
+
+  .atlas-chat-markdown pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .atlas-chat-markdown table {
+    @apply w-full border-collapse overflow-hidden rounded-xl border text-left text-xs;
+  }
+
+  .atlas-chat-markdown thead {
+    @apply bg-muted/80;
+  }
+
+  .atlas-chat-markdown th,
+  .atlas-chat-markdown td {
+    @apply border px-3 py-2 align-top;
+  }
+
+  .atlas-chat-markdown-user strong,
+  .atlas-chat-markdown-user h1,
+  .atlas-chat-markdown-user h2,
+  .atlas-chat-markdown-user h3,
+  .atlas-chat-markdown-user h4,
+  .atlas-chat-markdown-user a {
+    color: inherit;
+  }
+}
