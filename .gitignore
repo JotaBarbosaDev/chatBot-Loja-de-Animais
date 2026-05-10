@@ -5,6 +5,8 @@ dist/
 .env
 .env.local
 .env.*.local
+chatBot.pptx
+~$chatBot.pptx
 
 npm-debug.log*
 yarn-debug.log*
