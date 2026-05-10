@@ -32,7 +32,7 @@ export default function ProductCard({ product, offer, onAddToCart }) {
   const media = getProductMedia(product);
 
   return (
-    <Card className="h-full bg-gradient-to-br from-card via-card to-secondary/20">
+    <Card className="h-full bg-linear-to-br from-card via-card to-secondary/20">
       <SmartImage
         alt={media.alt}
         fallback={productEmoji(product.species, product.product_type)}
@@ -40,7 +40,7 @@ export default function ProductCard({ product, offer, onAddToCart }) {
         wrapperClassName="aspect-[4/3] border-b"
       />
 
-      <div className="bg-gradient-to-br from-primary/10 via-secondary/30 to-transparent p-4">
+      <div className="bg-linear-to-br from-primary/10 via-secondary/30 to-transparent p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="space-y-3">
             <div className="flex items-center gap-3">

@@ -542,7 +542,7 @@ function SiteLayout({
       </main>
 
       <footer className="border-t bg-muted/30">
-        <div className="mx-auto grid w-full max-w-[1600px] gap-4 px-4 py-8 sm:px-6 md:grid-cols-3 xl:px-8">
+        <div className="mx-auto grid w-full max-w-400 gap-4 px-4 py-8 sm:px-6 md:grid-cols-3 xl:px-8">
           <Card>
             <CardHeader>
               <Badge variant="outline">PetAtlas PT</Badge>
