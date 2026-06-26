@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/docker-dev.mjs",
+    "dev": "docker compose up --build -d",
     "dev:client": "vite",
-    "dev:docker": "node scripts/docker-dev.mjs",
-    "dev:docker:build": "node scripts/docker-dev.mjs --build",
+    "dev:docker": "docker compose up --build -d",
+    "dev:docker:build": "docker compose up --build -d",
     "dev:local": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
     "dev:server": "node server/index.mjs",
     "start": "vite",
