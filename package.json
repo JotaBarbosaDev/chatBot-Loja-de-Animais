@@ -4,8 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev": "node scripts/docker-dev.mjs",
     "dev:client": "vite",
+    "dev:docker": "node scripts/docker-dev.mjs",
+    "dev:docker:build": "node scripts/docker-dev.mjs --build",
+    "dev:local": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
     "dev:server": "node server/index.mjs",
     "start": "vite",
     "build": "vite build",

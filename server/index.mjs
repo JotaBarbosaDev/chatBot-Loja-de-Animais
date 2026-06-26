@@ -124,5 +124,5 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Atlas Assist API em http://127.0.0.1:${PORT}`);
+  console.log(`Atlas Assist API a escutar na porta ${PORT}`);
 });
